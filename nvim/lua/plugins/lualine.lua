@@ -21,6 +21,12 @@ return {
 						color = { fg = "#ff9e64" },
 					},
 				},
+				lualine_a = {
+					"buffers", -- This shows the buffers in the current session
+					show_filename_only = true, -- Only show filename in the buffer list
+					icons_enabled = true, -- Enable icons in the buffer list
+					mode = 0, -- 0: Shows buffer name + number, 1: Only buffer name
+				},
 			},
 		})
 	end,
