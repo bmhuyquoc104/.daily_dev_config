@@ -15,6 +15,7 @@ return {
       vim.keymap.set("n", "<leader>sif", require("fzf-lua").blines, { desc = "Fzf In files" }),
       vim.keymap.set("n", "<leader>sb", require("fzf-lua").buffers, { desc = "Fzf buffers" }),
       vim.keymap.set("n", "<leader>sh", require("fzf-lua").helptags, { desc = "Fzf Help tags" }),
+      vim.keymap.set("n", "<leader>sr", require("fzf-lua").registers, { desc = "Fzf registers" }),
     })
   end,
 }
