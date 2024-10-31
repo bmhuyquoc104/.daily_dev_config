@@ -37,6 +37,11 @@ return {
 
 			vim.keymap.set("n", "<leader>ops", ":Octo pr search <CR>", { desc = "Octo PR search" })
 			vim.keymap.set("n", "<leader>opl", ":Octo pr list <CR>", { desc = "Octo PR list" })
+      vim.keymap.set("n", "<leader>opc", ":Octo pr create <CR>", { desc = "Octo PR create" })
+      vim.keymap.set("n", "<leader>otr", ":Octo thread resolve <CR>", { desc = "Mark a review thread as resolved" })
+      vim.keymap.set("n", "<leader>otu", ":Octo thread unresolve <CR>", { desc = "Mark a review thread as unresolved" })
+      vim.keymap.set("n", "<leader>opr", ":Octo pr ready <CR>", { desc = "Mark a draft PR as ready for review" })
+      vim.keymap.set("n", "<leader>opd", ":Octo pr draft <CR>", { desc = "Send a ready PR back to draft" })
 		end,
 	},
 }
