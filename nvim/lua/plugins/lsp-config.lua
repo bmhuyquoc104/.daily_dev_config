@@ -29,7 +29,7 @@ return {
           formatter = "standard",
           linters = { "standard" },
         },
-        cmd = { "/Users/bmhuyquoc104/.rbenv/shims/ruby-lsp" },
+        cmd = { vim.fn.expand("~/.rbenv/shims/ruby-lsp") },
       })
       lspconfig.tsserver.setup({
         capabilities = capabilities,
