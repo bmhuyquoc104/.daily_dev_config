@@ -14,6 +14,9 @@ return {
     },
   },
   {
+    "b0o/schemastore.nvim",
+  },
+  {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
@@ -34,16 +37,25 @@ return {
       lspconfig.tsserver.setup({
         capabilities = capabilities,
       })
+      lspconfig.jsonls.setup({
+        capabilities = capabilities,
+        settings = {
+          json = {
+            schemas = require("schemastore").json.schemas(),
+            validate = { enable = true },
+          },
+        },
+      })
       lspconfig.yamlls.setup({
         capabilities = capabilities,
         settings = {
           yaml = {
-            schemas = {
-              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-              ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
-              ["https://json.schemastore.org/grpc-api-gateway.json"] = "/openapi.yaml/*",
+            schemaStore = {
+              enable = false,
+              url = "",
             },
-          },
+            schemas = require("schemastore").yaml.schemas(),
+          }
         },
       })
       lspconfig.lua_ls.setup({
