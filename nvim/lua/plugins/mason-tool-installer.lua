@@ -6,6 +6,7 @@ return {
 		mason_tool_installer.ensure_installed = {
 			"rubocop",
 			"stylua",
+      "prettier",
 		}
 	end,
 }
