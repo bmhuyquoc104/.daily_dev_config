@@ -1,4 +1,5 @@
 # Path configuration
+export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS
