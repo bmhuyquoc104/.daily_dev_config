@@ -2,10 +2,8 @@
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completionexport OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 export BAT_THEME="Catppuccin Mocha"
 
@@ -43,7 +41,6 @@ bindkey '^T' fzf-cd-and-run-widget
 # CLI configuration
 eval "$(zoxide init zsh)"
 eval $(thefuck --alias fuck)
-eval "$(rbenv init - zsh)"
 eval "$(starship init zsh)"
 
 
