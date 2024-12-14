@@ -38,11 +38,23 @@ fzf-cd-and-run-widget() {
 zle     -N   fzf-cd-and-run-widget
 bindkey '^T' fzf-cd-and-run-widget
 
-# CLI configuration
+# History configuration
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=100000
+SAVEHIST=100000
+HISTORY_IGNORE="(lsd|cd|pwd|exit|ls|zoxide|yazi|help|fuck|man)*"
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY
+
+# CLI activation tools
 eval "$(zoxide init zsh)"
 eval $(thefuck --alias fuck)
 eval "$(starship init zsh)"
-eval "$(mise activate zsh --shims)"
+eval "$(mise activate zsh)"
 
 # Load Zsh plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
