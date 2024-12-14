@@ -42,7 +42,7 @@ bindkey '^T' fzf-cd-and-run-widget
 eval "$(zoxide init zsh)"
 eval $(thefuck --alias fuck)
 eval "$(starship init zsh)"
-
+eval "$(mise activate zsh --shims)"
 
 # Load Zsh plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
