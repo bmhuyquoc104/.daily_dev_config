@@ -4,8 +4,23 @@ return {
     opts = {},
   },
   {
+    "MagicDuck/grug-far.nvim",
+    event = "VeryLazy",
+    config = function()
+      local grug_far = require("grug-far")
+      grug_far.setup({})
+      vim.keymap.set("n", "<leader>gfo", function()
+        grug_far.open()
+      end, { desc = "Grug far open" })
+      vim.keymap.set("v", "<leader>gfo", function()
+        grug_far.with_visual_selection()
+      end, { desc = "Grug far visual open" })
+    end,
+  },
+
+  {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {},
     cmd = "Trouble",
     keys = {
       {
