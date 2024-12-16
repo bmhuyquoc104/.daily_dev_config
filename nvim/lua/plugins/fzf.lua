@@ -1,36 +1,58 @@
 return {
   "ibhagwan/fzf-lua",
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  keys = {
+    {
+      "<leader>sgf",
+      "<cmd>lua require('fzf-lua').git_files()<CR>",
+      desc = "Fzf Git Files",
+    },
+    {
+      "<leader>sf",
+      "<cmd>lua require('fzf-lua').files()<CR>",
+      desc = "Fzf Files",
+    },
+    {
+      "<leader>sgb",
+      "<cmd>lua require('fzf-lua').git_branches()<CR>",
+      desc = "Fzf Git Branches",
+    },
+    {
+      "<leader>scp",
+      "<cmd>lua require('fzf-lua').live_grep()<CR>",
+      desc = "Fzf Current Project",
+    },
+    {
+      "<leader>sws",
+      "<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>",
+      desc = "Fzf Live Workspace Symbols",
+    },
+    {
+      "<leader>sif",
+      "<cmd>lua require('fzf-lua').blines()<CR>",
+      desc = "Fzf In files",
+    },
+    {
+      "<leader>sb",
+      "<cmd>lua require('fzf-lua').buffers()<CR>",
+      desc = "Fzf buffers",
+    },
+    {
+      "<leader>sh",
+      "<cmd>lua require('fzf-lua').helptags()<CR>",
+      desc = "Fzf Help tags",
+    },
+    {
+      "<leader>sr",
+      "<cmd>lua require('fzf-lua').registers()<CR>",
+      desc = "Fzf registers",
+    },
+    {
+      "<leader>sd",
+      "<cmd>lua require('fzf-lua').live_grep({ cwd = vim.fn.input('Directory (leave empty for root): ') or vim.loop.cwd() })<CR>",
+      desc = "Fzf Search in Directory or Root",
+    },
+  },
   config = function()
-    local fzf = require("fzf-lua")
-
-    local function search_in_directory_or_root()
-      local input = vim.fn.input("Directory (leave empty for root): ")
-      local search_dir = input ~= "" and input or vim.loop.cwd()
-      fzf.live_grep({ cwd = search_dir })
-    end
-
-    require("fzf-lua").setup({
-      vim.keymap.set("n", "<leader>sgf", fzf.git_files, { desc = "Fzf Git Files" }),
-      vim.keymap.set("n", "<leader>sf", fzf.files, { desc = "Fzf Files" }),
-      vim.keymap.set("n", "<leader>sgb", fzf.git_branches, { desc = "Fzf Git Branches" }),
-      vim.keymap.set("n", "<leader>scp", fzf.live_grep, { desc = "Fzf Current Project" }),
-      vim.keymap.set(
-        "n",
-        "<leader>sws",
-        fzf.lsp_live_workspace_symbols,
-        { desc = "Fzf Live Workspace Symbols" }
-      ),
-      vim.keymap.set("n", "<leader>sif", fzf.blines, { desc = "Fzf In files" }),
-      vim.keymap.set("n", "<leader>sb", fzf.buffers, { desc = "Fzf buffers" }),
-      vim.keymap.set("n", "<leader>sh", fzf.helptags, { desc = "Fzf Help tags" }),
-      vim.keymap.set("n", "<leader>sr", fzf.registers, { desc = "Fzf registers" }),
-      vim.keymap.set(
-        "n",
-        "<leader>sd",
-        search_in_directory_or_root,
-        { desc = "Fzf Search in Directory or Root" }
-      ),
-    })
+    require("fzf-lua").setup({})
   end,
 }

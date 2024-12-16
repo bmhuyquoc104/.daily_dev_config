@@ -20,10 +20,10 @@ return {
 	},
 	{
 		"pwntester/octo.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"ibhagwan/fzf-lua",
+		cmd = "Octo",
+		keys = {
+			{ "<leader>ops", ":Octo pr search <CR>", desc = "Octo PR search" },
+			{ "<leader>opl", ":Octo pr list <CR>", desc = "Octo PR list" },
 		},
 		config = function()
 			require("octo").setup({
@@ -34,24 +34,6 @@ return {
 				},
 				default_to_projects_v2 = true,
 			})
-
-			vim.keymap.set("n", "<leader>ops", ":Octo pr search <CR>", { desc = "Octo PR search" })
-			vim.keymap.set("n", "<leader>opl", ":Octo pr list <CR>", { desc = "Octo PR list" })
-			vim.keymap.set("n", "<leader>opc", ":Octo pr create <CR>", { desc = "Octo PR create" })
-			vim.keymap.set(
-				"n",
-				"<leader>otr",
-				":Octo thread resolve <CR>",
-				{ desc = "Mark a review thread as resolved" }
-			)
-			vim.keymap.set(
-				"n",
-				"<leader>otu",
-				":Octo thread unresolve <CR>",
-				{ desc = "Mark a review thread as unresolved" }
-			)
-			vim.keymap.set("n", "<leader>opr", ":Octo pr ready <CR>", { desc = "Mark a draft PR as ready for review" })
-			vim.keymap.set("n", "<leader>opd", ":Octo pr draft <CR>", { desc = "Send a ready PR back to draft" })
 		end,
 	},
 	{

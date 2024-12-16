@@ -1,6 +1,6 @@
 return {
   "folke/noice.nvim",
-  event = "VeryLazy",
+  lazy = true,
   vim.keymap.set("n", "<leader>nd", function()
     require("noice").cmd("dismiss")
   end),

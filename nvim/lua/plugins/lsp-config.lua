@@ -15,6 +15,7 @@ return {
 	},
 	{
 		"b0o/schemastore.nvim",
+		lazy = true,
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -31,7 +32,7 @@ return {
 				},
 				cmd = { "sh", "-c", "mise x -- ruby-lsp" },
 			})
-			lspconfig.tsserver.setup({
+			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
 			lspconfig.jsonls.setup({

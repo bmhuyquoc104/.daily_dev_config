@@ -1,35 +1,29 @@
 return {
-  -- "nvim-neo-tree/neo-tree.nvim",
-  -- dependencies = {
-  --   "nvim-lua/plenary.nvim",
-  --   "nvim-tree/nvim-web-devicons",
-  --   "muniftanjim/nui.nvim",
-  -- },
-  -- lazy = false,
-  -- opts = {
-  --   filesystem = {
-  --     filtered_items = {
-  --       hide_dotfiles = false, -- show dotfiles
-  --     }
-  --   }
-  -- },
-  -- vim.keymap.set('n', '<C-n>', ':Neotree toggle left<CR>', {})
   {
     "echasnovski/mini.files",
     version = false,
+    keys = {
+      {
+        "<C-n>",
+        function()
+          local MiniFiles = require("mini.files")
+          MiniFiles.open()
+        end,
+        desc = "Open MiniFiles",
+      },
+    },
     config = function()
       local MiniFiles = require("mini.files")
-      MiniFiles.setup({
-        vim.keymap.set("n", "<C-n>", ":lua MiniFiles.open()<CR>", {}),
-      })
-      local files_grug_far_replace = function(path)
-        -- works only if cursor is on the valid file system entry
+      MiniFiles.setup({})
+
+      local files_grug_far_replace = function()
+        -- Works only if cursor is on a valid file system entry
         local cur_entry_path = MiniFiles.get_fs_entry().path
         local prefills = { paths = vim.fs.dirname(cur_entry_path) }
 
         local grug_far = require("grug-far")
 
-        -- instance check
+        -- Instance check
         if not grug_far.has_instance("explorer") then
           grug_far.open({
             instanceName = "explorer",
@@ -38,7 +32,7 @@ return {
           })
         else
           grug_far.open_instance("explorer")
-          -- updating the prefills without crealing the search and other fields
+          -- Updating the prefills without clearing the search and other fields
           grug_far.update_instance_prefills("explorer", prefills, false)
         end
       end
