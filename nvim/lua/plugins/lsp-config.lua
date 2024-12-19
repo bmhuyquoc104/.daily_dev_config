@@ -61,11 +61,12 @@ return {
 			})
 		end,
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover documentation LSP" }),
-		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action LSP" }),
-		vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { desc = "Goto Definition LSP" }),
-		vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, { desc = "Goto References LSP" }),
-		vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "Format File LSP" }),
-		vim.keymap.set("n", "<leader>gc", vim.lsp.buf.implementation, { desc = "Goto Implementation LSP" }),
-		vim.keymap.set("n", "<leader>grn", vim.lsp.buf.rename, { desc = "Rename LSP" }),
+		vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Action LSP" }),
+		vim.keymap.set("n", "<leader>ld", vim.lsp.buf.definition, { desc = "Goto Definition LSP" }),
+		vim.keymap.set("n", "<leader>lr", vim.lsp.buf.references, { desc = "Goto References LSP" }),
+		vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { desc = "Format File LSP" }),
+		vim.keymap.set("n", "<leader>li", vim.lsp.buf.implementation, { desc = "Goto Implementation LSP" }),
+		vim.keymap.set("n", "<leader>lrn", vim.lsp.buf.rename, { desc = "Rename LSP" }),
+		vim.keymap.set("n", "<leader>ll", ":LspLog<CR>", { desc = "Log LSP" }),
 	},
 }
