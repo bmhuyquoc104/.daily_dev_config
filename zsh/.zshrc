@@ -2,6 +2,7 @@
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH=$PATH:$HOME/.local/bin
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
@@ -42,7 +43,7 @@ bindkey '^T' fzf-cd-and-run-widget
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=100000
 SAVEHIST=100000
-HISTORY_IGNORE="(lsd|cd|pwd|exit|ls|zoxide|yazi|help|fuck|man)*"
+HISTORY_IGNORE="(lsd|cd|pwd|exit|ls|zoxide|yazi|help|man)*"
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_FIND_NO_DUPS
@@ -52,7 +53,6 @@ setopt EXTENDED_HISTORY
 
 # CLI activation tools
 eval "$(zoxide init zsh)"
-eval $(thefuck --alias fuck)
 eval "$(starship init zsh)"
 eval "$(mise activate zsh)"
 
