@@ -1,54 +1,29 @@
-local handler = function(virtText, lnum, endLnum, width, truncate)
-	local newVirtText = {}
-	local suffix = (" 󰁂 %d "):format(endLnum - lnum)
-	local sufWidth = vim.fn.strdisplaywidth(suffix)
-	local targetWidth = width - sufWidth
-	local curWidth = 0
-	for _, chunk in ipairs(virtText) do
-		local chunkText = chunk[1]
-		local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-		if targetWidth > curWidth + chunkWidth then
-			table.insert(newVirtText, chunk)
-		else
-			chunkText = truncate(chunkText, targetWidth - curWidth)
-			local hlGroup = chunk[2]
-			table.insert(newVirtText, { chunkText, hlGroup })
-			chunkWidth = vim.fn.strdisplaywidth(chunkText)
-			-- str width returned from truncate() may less than 2nd argument, need padding
-			if curWidth + chunkWidth < targetWidth then
-				suffix = suffix .. (" "):rep(targetWidth - curWidth - chunkWidth)
-			end
-			break
-		end
-		curWidth = curWidth + chunkWidth
-	end
-	table.insert(newVirtText, { suffix, "MoreMsg" })
-	return newVirtText
-end
-
 return {
-	"kevinhwang91/nvim-ufo",
-	dependencies = { "kevinhwang91/promise-async" },
-  event = { "BufReadPost" },
+	"stevearc/aerial.nvim",
+	opts = {},
+	keys = {
+		{
+			"<leader>at",
+			mode = { "n", "x", "o" },
+			"<cmd>AerialToggle left<CR>",
+			desc = "Toggle Aerial left",
+		},
+	},
 	config = function()
-		require("ufo").setup({
-			fold_virt_text_handler = handler,
-			provider_selector = function(bufnr, filetype, buftype)
-				return { "treesitter", "indent" }
+		require("aerial").setup({
+			layout = {
+				max_width = { 40, 0.4 },
+				min_width = { 20 },
+				default_direction = "left",
+			},
+			manage_folds = true,
+		})
+		vim.api.nvim_create_autocmd("FileType", {
+			group = vim.api.nvim_create_augroup("AerialWrap", { clear = true }),
+			pattern = "aerial",
+			callback = function()
+				vim.opt_local.wrap = true
 			end,
 		})
-		vim.o.foldcolumn = "1"
-		vim.o.foldlevel = 99
-		vim.o.foldlevelstart = 99
-		vim.o.foldenable = true
-
-		vim.keymap.set("n", "zR", require("ufo").openAllFolds)
-		vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
-		vim.keymap.set("n", "K", function()
-			local winid = require("ufo").peekFoldedLinesUnderCursor()
-			if not winid then
-				vim.lsp.buf.hover()
-			end
-		end)
 	end,
 }
