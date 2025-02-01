@@ -36,7 +36,8 @@ return {
 		event = "LspAttach",
 		config = function()
 			require("tiny-inline-diagnostic").setup({
-				preset = "amongus",
+				preset = "ghost",
+				transparent_bg = true,
 				options = {
 					show_source = true,
 					multilines = {
