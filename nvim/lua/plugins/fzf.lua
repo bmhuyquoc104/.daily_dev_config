@@ -7,6 +7,16 @@ return {
       desc = "Fzf Git Files",
     },
     {
+      "<leader>sdf",
+      "<cmd>lua require('fzf-lua').diagnostics_document()<CR>",
+      desc = "Fzf Diagnostic in file",
+    },
+    {
+      "<leader>sdp",
+      "<cmd>lua require('fzf-lua').diagnostics_workspace()<CR>",
+      desc = "Fzf Diagnostic in project",
+    },
+    {
       "<leader>sf",
       "<cmd>lua require('fzf-lua').files()<CR>",
       desc = "Fzf Files",
@@ -47,7 +57,7 @@ return {
       desc = "Fzf registers",
     },
     {
-      "<leader>sd",
+      "<leader>sp",
       "<cmd>lua require('fzf-lua').live_grep({ cwd = vim.fn.input('Directory (leave empty for root): ') or vim.loop.cwd() })<CR>",
       desc = "Fzf Search in Directory or Root",
     },
