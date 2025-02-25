@@ -12,7 +12,7 @@ return {
 			{
 				"<leader>gfo",
 				function()
-					require("grug-far").open()
+					require("grug-far").open({ transient = true })
 				end,
 				desc = "Grug far open",
 				mode = { "n" },
@@ -20,7 +20,10 @@ return {
 			{
 				"<leader>gfo",
 				function()
-					require("grug-far").with_visual_selection()
+					require("grug-far").with_visual_selection({
+						prefills = { paths = vim.fn.expand("%") },
+						transient = true,
+					})
 				end,
 				desc = "Grug far visual open",
 				mode = { "v" },
