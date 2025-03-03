@@ -27,7 +27,7 @@ return {
 		{
 			"<leader>sf",
 			function()
-				require("snacks").picker.files()
+				require("snacks").picker.smart()
 			end,
 			desc = "Files",
 		},
@@ -95,6 +95,13 @@ return {
 			end,
 			desc = "Hide notification",
 		},
+		{
+			"<leader>e",
+			function()
+				require("snacks").explorer()
+			end,
+			desc = "File explorer",
+		},
 	},
 	opts = {
 		picker = {
@@ -106,5 +113,8 @@ return {
 		notify = {
 			enabled = true,
 		},
+    explorer = {
+      enable = true,
+    }
 	},
 }
