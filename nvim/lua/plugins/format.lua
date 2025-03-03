@@ -53,15 +53,6 @@ return {
 		end,
 	},
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
-		event = { "BufReadPre", "BufNewFile" },
-		config = function()
-			require("ibl").setup()
-		end,
-	},
-	{
 		"folke/flash.nvim",
 		opts = {},
 		keys = {

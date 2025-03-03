@@ -10,20 +10,13 @@ return {
 			end,
 			desc = "Git Files",
 		},
-		{
-			"<leader>sdf",
-			function()
-				require("snacks").picker.diagnostics_buffer()
-			end,
-			desc = "Diagnostic in file",
-		},
-		{
-			"<leader>sdp",
-			function()
-				require("snacks").picker.diagnostics()
-			end,
-			desc = "Diagnostic in project",
-		},
+    {
+      "<leader>snh",
+      function()
+        require("snacks").picker.notifications()
+      end,
+      desc = "Notification history",
+    },
 		{
 			"<leader>sf",
 			function()
@@ -115,6 +108,13 @@ return {
 		},
     explorer = {
       enable = true,
-    }
+    },
+    indent = {
+      enable = true,
+    },
+    dashboard = {
+      enable = true,
+      example = "files"
+    },
 	},
 }
