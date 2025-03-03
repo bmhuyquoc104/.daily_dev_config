@@ -6,18 +6,18 @@ return {
 		require("catppuccin").setup({
 			integrations = {
 				cmp = true,
-        mason = true,
+				mason = true,
 				diffview = true,
-				noice = true,
-				notify = true,
-        octo = true,
-        lsp_trouble = true,
-        nvim_surround = true,
-        which_key = true,
-        grug_far = true,
-				mini = {
+				aerial = true,
+				octo = true,
+				lsp_trouble = true,
+				nvim_surround = true,
+				which_key = true,
+				grug_far = true,
+				blink_cmp = true,
+				snacks = {
 					enabled = true,
-					indentscope_color = "",
+					indent_scope_color = "catppuccin-mocha",
 				},
 			},
 		})

@@ -114,7 +114,7 @@ return {
     },
     dashboard = {
       enable = true,
-      example = "files"
+      example = "compact_files"
     },
 	},
 }
