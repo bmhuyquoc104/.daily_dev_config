@@ -12,6 +12,7 @@ return {
 	},
 	{
 		"olimorris/codecompanion.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		config = function()
 			require("codecompanion").setup({
 				prompt_library = {
@@ -83,16 +84,24 @@ return {
 				},
 				strategies = {
 					chat = {
-						-- slash_commands = {
-						-- 	["buffer"] = {
-						-- 		callback = "strategies.chat.slash_commands.buffer",
-						-- 		description = "Select a file using Fzf lua",
-						-- 		opts = {
-						-- 			provider = "fzf_lua",
-						-- 			contains_code = true,
-						-- 		},
-						-- 	},
-						-- },
+						slash_commands = {
+							["buffer"] = {
+								callback = "strategies.chat.slash_commands.buffer",
+								description = "Select a buffer using snack",
+								opts = {
+									provider = "snacks",
+									contains_code = true,
+								},
+							},
+							["file"] = {
+								callback = "strategies.chat.slash_commands.file",
+								description = "Select a file using snack",
+								opts = {
+									provider = "snacks",
+									contains_code = true,
+								},
+							},
+						},
 						roles = {
 							user = "Huyne104",
 						},
