@@ -1,78 +1,106 @@
 return {
 	{
 		"ibhagwan/fzf-lua",
-		keys = {
-			{
-				"<leader>sgf",
-				"<cmd>lua require('fzf-lua').git_files()<CR>",
-				desc = "Fzf Git Files",
-			},
-			{
-				"<leader>sdf",
-				"<cmd>lua require('fzf-lua').diagnostics_document()<CR>",
-				desc = "Fzf Diagnostic in file",
-			},
-			{
-				"<leader>sdp",
-				"<cmd>lua require('fzf-lua').diagnostics_workspace()<CR>",
-				desc = "Fzf Diagnostic in project",
-			},
-			{
-				"<leader>sf",
-				"<cmd>lua require('fzf-lua').files()<CR>",
-				desc = "Fzf Files",
-			},
-			{
-				"<leader>sgb",
-				"<cmd>lua require('fzf-lua').git_branches()<CR>",
-				desc = "Fzf Git Branches",
-			},
-			{
-				"<leader>scp",
-				"<cmd>lua require('fzf-lua').live_grep()<CR>",
-				desc = "Fzf Current Project",
-			},
-			{
-				"<leader>sws",
-				"<cmd>lua require('fzf-lua').lsp_live_workspace_symbols()<CR>",
-				desc = "Fzf Live Workspace Symbols",
-			},
-			{
-				"<leader>sif",
-				"<cmd>lua require('fzf-lua').blines()<CR>",
-				desc = "Fzf In files",
-			},
-			{
-				"<leader>sb",
-				"<cmd>lua require('fzf-lua').buffers()<CR>",
-				desc = "Fzf buffers",
-			},
-			{
-				"<leader>sh",
-				"<cmd>lua require('fzf-lua').helptags()<CR>",
-				desc = "Fzf Help tags",
-			},
-			{
-				"<leader>sr",
-				"<cmd>lua require('fzf-lua').registers()<CR>",
-				desc = "Fzf registers",
-			},
-			{
-				"<leader>sp",
-				"<cmd>lua require('fzf-lua').live_grep({ cwd = vim.fn.input('Directory (leave empty for root): ') or vim.loop.cwd() })<CR>",
-				desc = "Fzf Search in Directory or Root",
-			},
-		},
 		config = function()
 			require("fzf-lua").setup({})
 		end,
 	},
+
 	{
 		"folke/snacks.nvim",
 		priority = 1000,
 		lazy = false,
+		keys = {
+			{
+				"<leader>sgf",
+				function()
+					require("snacks").picker.git_files()
+				end,
+				desc = "Git Files",
+			},
+			{
+				"<leader>sdf",
+				function()
+					require("snacks").picker.diagnostics_buffer()
+				end,
+				desc = "Diagnostic in file",
+			},
+			{
+				"<leader>sdp",
+				function()
+					require("snacks").picker.diagnostics()
+				end,
+				desc = "Diagnostic in project",
+			},
+			{
+				"<leader>sf",
+				function()
+					require("snacks").picker.files()
+				end,
+				desc = "Files",
+			},
+			{
+				"<leader>sgb",
+				function()
+					require("snacks").picker.git_branches()
+				end,
+				desc = "Git Branches",
+			},
+			{
+				"<leader>scp",
+				function()
+					require("snacks").picker.grep()
+				end,
+				desc = "Live Grep Current Project",
+			},
+			{
+				"<leader>sws",
+				function()
+					require("snacks").picker.lsp_workspace_symbols()
+				end,
+				desc = "Live Workspace Symbols",
+			},
+			{
+				"<leader>sif",
+				function()
+					require("snacks").picker.lines()
+				end,
+				desc = "In files",
+			},
+			{
+				"<leader>sb",
+				function()
+					require("snacks").picker.buffers()
+				end,
+				desc = "Buffers",
+			},
+			{
+				"<leader>sh",
+				function()
+					require("snacks").picker.help()
+				end,
+				desc = "Help tags",
+			},
+			{
+				"<leader>sr",
+				function()
+					require("snacks").picker.registers()
+				end,
+				desc = "Registers",
+			},
+			{
+				"<leader>sp",
+				function()
+					local dir = vim.fn.input("Directory (leave empty for root): ")
+					require("snacks").picker.grep({ cwd = dir ~= "" and dir or vim.loop.cwd() })
+				end,
+				desc = "Search in Directory or Root",
+			},
+		},
 		opts = {
-			picker = { enabled = true },
+			picker = {
+				enabled = true,
+			},
 		},
 	},
 }

@@ -17,10 +17,10 @@ return {
 
 		dashboard.section.buttons.val = {
 			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
-			dashboard.button("SPC sof", "󰈢  > Recent Files", "<cmd>lua require('fzf-lua').oldfiles()<CR>"),
+			dashboard.button("SPC sof", "󰈢  > Recent Files", "<cmd>lua Snacks.picker.recent()<CR>"),
 			dashboard.button("C-n", "  > Toggle file explorer", "<cmd>lua require('mini.files').open()<CR>"),
-			dashboard.button("SPC sf", "󰱼  > Find File", "<cmd>lua require('fzf-lua').files()<CR>"),
-			dashboard.button("SPC scp", "  > Find Word", "<cmd>lua require('fzf-lua').live_grep()<CR>"),
+			dashboard.button("SPC sf", "󰱼  > Find File", "<cmd>lua Snacks.picker.files() <CR>"),
+			dashboard.button("SPC scp", "  > Find Word", "<cmd>lua Snacks.picker.grep() <CR>"),
 			dashboard.button("q", "  > Quit NVIM", "<cmd>qa<CR>"),
 		}
 
