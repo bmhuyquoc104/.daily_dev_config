@@ -10,13 +10,13 @@ return {
 			end,
 			desc = "Git Files",
 		},
-    {
-      "<leader>snh",
-      function()
-        require("snacks").picker.notifications()
-      end,
-      desc = "Notification history",
-    },
+		{
+			"<leader>snh",
+			function()
+				require("snacks").picker.notifications()
+			end,
+			desc = "Notification history",
+		},
 		{
 			"<leader>sf",
 			function()
@@ -106,15 +106,17 @@ return {
 		notify = {
 			enabled = true,
 		},
-    explorer = {
-      enable = true,
-    },
-    indent = {
-      enable = true,
-    },
-    dashboard = {
-      enable = true,
-      example = "compact_files"
-    },
+		explorer = {
+			enable = true,
+		},
+		indent = {
+			enable = true,
+		},
+		scroll = { enabled = true },
+		bigfile = { enabled = true },
+		dashboard = {
+			enable = true,
+			example = "compact_files",
+		},
 	},
 }

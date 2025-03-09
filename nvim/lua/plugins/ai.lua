@@ -20,8 +20,6 @@ return {
 						strategy = "chat",
 						description = "Get some special advice from an LLM",
 						opts = {
-							mapping = "<leader>ce",
-							modes = { "v" },
 							short_name = "expert",
 							auto_submit = true,
 							stop_context_insertion = true,
@@ -117,6 +115,12 @@ return {
 				{ "n", "v" },
 				"<leader>co",
 				"<cmd>CodeCompanionChat Toggle<cr>",
+				{ noremap = true, silent = true }
+			)
+			vim.keymap.set(
+				{ "v" },
+				"<leader>ce",
+				"<cmd>CodeCompanion /expert<cr>",
 				{ noremap = true, silent = true }
 			)
 		end,
