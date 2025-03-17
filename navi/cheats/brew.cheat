@@ -1,0 +1,12 @@
+# Homebrew Cheatsheet
+
+% homebrew, brew
+
+# Dump all installed Homebrew packages to a file
+brew bundle dump --file=<output_file> --force
+
+# Install packages from a Brewfile or script
+brew bundle install --file=<input_file>
+
+$ output_file: echo -e "$HOME/.config/scripts/brew_install_script.sh\n<custom>" --- --header "Choose or type a filename"
+$ input_file: echo -e "$HOME/.config/scripts/brew_install_script.sh\n<custom>" --- --header "Choose or type a filename"

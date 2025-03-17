@@ -1,0 +1,6 @@
+# Ctags Cheatsheet
+
+% ctags
+# Generate rails ctag
+ctags -R --languages=ruby --exclude=.git --exclude=log --exclude=tmp . $(bundle list --paths)
+
