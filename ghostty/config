@@ -3,4 +3,4 @@ theme = catppuccin-mocha
 fullscreen = true
 font-size = 16
 shell-integration = fish
-
+macos-option-as-alt = true
