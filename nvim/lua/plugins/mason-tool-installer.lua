@@ -8,7 +8,6 @@ return {
 				"rubocop",
 				"stylua",
 				"prettier",
-				"ruff",
 			},
 		})
 	end,

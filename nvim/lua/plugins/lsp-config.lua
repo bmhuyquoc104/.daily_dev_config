@@ -26,7 +26,21 @@ local function get_server_configs(capabilities)
 			cmd = { "sh", "-c", "mise x -- ruby-lsp" },
 		},
 		ts_ls = { capabilities = capabilities },
-		pyright = { capabilities = capabilities },
+		basedpyright = {
+			settings = {
+				basedpyright = {
+					disableOrganizeImports = true,
+					analysis = {
+						diagnosticMode = "openFilesOnly",
+						useLibraryCodeForTypes = true,
+						autoImportCompletions = true,
+					},
+				},
+			},
+		},
+		ruff = {
+			capabilities = capabilities,
+		},
 		jsonls = {
 			capabilities = capabilities,
 			settings = {
@@ -64,7 +78,7 @@ return {
 		"williamboman/mason-lspconfig",
 		lazy = false,
 		opts = {
-			ensure_installed = { "yamlls", "jsonls", "ts_ls", "lua_ls", "pyright" },
+			ensure_installed = { "yamlls", "jsonls", "ts_ls", "lua_ls", "basedpyright", "ruff" },
 		},
 	},
 	{
