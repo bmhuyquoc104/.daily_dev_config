@@ -38,6 +38,7 @@ local function setup_lsp()
 		"jsonls",
 		"yamlls",
 		"ruby_ls",
+    "taplo",
 	})
 end
 

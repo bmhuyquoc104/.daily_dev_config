@@ -13,6 +13,7 @@ return {
 					"lua-language-server",
 					"basedpyright",
 					"ruff",
+          "taplo",
 					-- Formatters/Linters
 					"rubocop",
 					"stylua",
