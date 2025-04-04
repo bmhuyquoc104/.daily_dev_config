@@ -2,11 +2,29 @@
 
 % homebrew, brew
 
-# Dump all installed Homebrew packages to a file
-brew bundle dump --file=<output_file> --force
+# Dump packages to file
+begin
+    brew ls --installed-on-request
+    brew ls --cask
+end | sort | fzf --multi --header="Select packages to dump (TAB to select multiple)" | xargs -I {} sh -c 'if brew ls --cask | grep -q "^{}$"; then echo "cask \"{}\""; else echo "brew \"{}\""; fi' > /tmp/brew_selected && echo -e "nvim_deps.sh (Neovim and dependencies)\ncli_tools.sh (Command line tools)\ngui_apps.sh (GUI applications)" | fzf --header="Select destination file:" | string replace -r " \\(.*\\)" "" | xargs -I {} sh -c "cat /tmp/brew_selected >> \"$HOME/.config/scripts/{}\""
 
-# Install packages from a Brewfile or script
-brew bundle install --file=<input_file>
+# Remove packages from file
+begin
+    set -l file_choice (echo -e "nvim_deps.sh (Neovim and dependencies)\ncli_tools.sh (Command line tools)\ngui_apps.sh (GUI applications)" | fzf --header="Select file to remove from:")
+    set -l file (string replace -r " \\(.*\\)" "" -- $file_choice)
+    set -l filepath "$HOME/.config/scripts/$file"
+    set -l type (switch $file
+        case "gui_apps.sh"
+            echo "cask"
+        case "*"
+            echo "brew"
+    end)
+    grep "^$type" "$filepath" | sed "s/$type \"\(.*\)\"/\1/" | fzf --multi --header="Select packages to remove from $file (TAB to select multiple)" | while read -l pkg
+        grep -v "\"$pkg\"" "$filepath" > "$filepath.tmp" && mv "$filepath.tmp" "$filepath"
+    end
+end
 
-$ output_file: echo -e "$HOME/.config/scripts/brew_install_script.sh\n<custom>" --- --header "Choose or type a filename"
-$ input_file: echo -e "$HOME/.config/scripts/brew_install_script.sh\n<custom>" --- --header "Choose or type a filename"
+# Install Homebrew packages
+for f in <file>; brew bundle install --file=$f; end
+
+$ file: echo -e "nvim_deps.sh\ncli_tools.sh\ngui_apps.sh" | fzf --multi --no-sort --header="Select option(s) [TAB to select multiple]:" --preview 'echo -e "Options:\n  nvim_deps.sh - Neovim and dependencies\n  cli_tools.sh - Command line tools\n  gui_apps.sh - GUI applications"' | sed 's/^/$HOME\/\.config\/scripts\//' | tr '\n' ' '

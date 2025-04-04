@@ -1,0 +1,7 @@
+brew "libevent"
+brew "libidn2"
+brew "neovim"
+brew "ripgrep"
+brew "fd"
+brew "fzf"
+
