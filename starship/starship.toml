@@ -109,9 +109,15 @@ style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 
 [python]
+format = '[[ ${symbol}( ${version} )(\($virtualenv\))](fg:base bg:teal)]($style)'
 symbol = ""
 style = "bg:teal"
-format = '[[ $symbol( $version) ](fg:base bg:teal)]($style)'
+detect_files = [
+  ".python-version",
+  "pyproject.toml",
+  "setup.py",
+]
+python_binary = ["python3"]
 
 [ruby]
 symbol = ""
