@@ -3,6 +3,7 @@ if status is-interactive
   fish_add_path /opt/homebrew/bin
   fish_add_path (go env GOPATH)/bin
   fish_add_path /opt/homebrew/opt/curl/bin
+  fish_add_path /opt/homebrew/opt/mysql@8.0/bin
   fish_add_path $HOME/.local/bin
   fish_add_path /opt/homebrew/opt/libpq/bin
   fish_add_path /Applications/Firefox.app/Contents/MacOS
