@@ -33,7 +33,7 @@ local function setup_lsp()
 	vim.lsp.enable({
 		"lua_ls",
 		"ts_ls",
-		"basedpyright",
+    "pyright",
 		"ruff",
 		"jsonls",
 		"yamlls",

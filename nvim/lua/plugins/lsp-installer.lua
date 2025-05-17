@@ -11,12 +11,14 @@ return {
 					"jsonls",
 					"typescript-language-server",
 					"lua-language-server",
-					"basedpyright",
+          "sqlls",
+          "pyright",
 					"ruff",
           "taplo",
 					-- Formatters/Linters
-					"rubocop",
+					-- "rubocop",
 					"stylua",
+          "sqruff",
 					"prettier",
 				},
 			})

@@ -21,6 +21,7 @@ if status is-interactive
   # Aliases
   alias pzf='nvim (fzf -m --preview "bat --style=numbers --color=always {}")'
   alias activate='source .venv/bin/activate.fish'
+  alias poetry_activate='eval (poetry env activate)'
   alias help='tldr'
 
   # FZF configuration
