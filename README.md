@@ -48,3 +48,4 @@ After installing the configuration:
 1. Open `tmux.conf`
 2. Press `Ctrl + s` followed by `I` to install all plugins
 3. For Catppuccin theme configuration, follow the instructions at [catppuccin/tmux](https://github.com/catppuccin/tmux)
+4. For tmux session x issue when open, follow this [issue](https://github.com/omerxx/tmux-sessionx/issues/166) to fix 
