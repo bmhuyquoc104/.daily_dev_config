@@ -28,7 +28,7 @@ return {
 		config = function()
 			require("octo").setup({
 				enable_builtin = true,
-				picker = "fzf-lua",
+				picker = "snacks",
 				picker_config = {
 					use_emojis = true,
 				},
@@ -60,12 +60,12 @@ return {
 			},
 		},
 		config = function()
-			require("advanced_git_search.fzf").setup({
+			require("advanced_git_search.snacks").setup({
 				browse_command = "GitLink! rev={commit_hash}",
 				diff_plugin = "diffview",
 				git_flags = {},
 				git_diff_flags = {},
-				show_builtin_git_pickers = false,
+				show_builtin_git_pickers = true,
 				entry_default_author_or_date = "author",
 				keymaps = {
 					toggle_date_author = "<C-w>",
