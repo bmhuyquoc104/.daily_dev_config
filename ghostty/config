@@ -1,5 +1,5 @@
 command = /opt/homebrew/bin/fish
-theme = catppuccin-mocha
+theme = Catppuccin Mocha
 fullscreen = true
 font-size = 16
 shell-integration = fish
