@@ -55,24 +55,18 @@ return {
 						},
 					},
 				},
-				adapters = {
-					copilot = function()
-						return require("codecompanion.adapters").extend("copilot", {
-							schema = {
-								model = {
-									default = "claude-3.5-sonnet",
-								},
-							},
-						})
-					end,
-				},
 				display = {
 					chat = {
+						auto_scroll = false,
+						icons = {
+							chat_context = "📎️", -- You can also apply an icon to the fold
+						},
 						intro_message = "Welcome to CodeCompanion ✨! Press ? for options",
 						show_header_separator = false,
 						separator = "─",
+						fold_context = true,
 						show_references = true,
-						show_settings = true,
+						show_settings = false,
 						show_token_count = true,
 						start_in_insert_mode = false, -- Open the chat buffer in insert mode?
 						window = {
@@ -82,6 +76,9 @@ return {
 				},
 				strategies = {
 					chat = {
+						opts = {
+							completion_provider = "blink",
+						},
 						slash_commands = {
 							["buffer"] = {
 								callback = "strategies.chat.slash_commands.buffer",
@@ -103,10 +100,16 @@ return {
 						roles = {
 							user = "Huyne104",
 						},
-						adapter = "copilot",
+						adapter = {
+							name = "copilot",
+							model = "gpt-5",
+						},
 					},
 					inline = {
-						adapter = "copilot",
+						adapter = {
+							name = "copilot",
+							model = "gpt-5",
+						},
 					},
 				},
 			})
@@ -117,12 +120,7 @@ return {
 				"<cmd>CodeCompanionChat Toggle<cr>",
 				{ noremap = true, silent = true }
 			)
-			vim.keymap.set(
-				{ "v" },
-				"<leader>ce",
-				"<cmd>CodeCompanion /expert<cr>",
-				{ noremap = true, silent = true }
-			)
+			vim.keymap.set({ "v" }, "<leader>ce", "<cmd>CodeCompanion /expert<cr>", { noremap = true, silent = true })
 		end,
 	},
 }
