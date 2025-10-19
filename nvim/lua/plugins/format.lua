@@ -17,22 +17,30 @@ return {
 		cmd = "GrugFar",
 		keys = {
 			{
-				"<leader>gfo",
+				"<leader>gfa",
 				function()
 					require("grug-far").open({ transient = true })
 				end,
-				desc = "Grug far open",
+				desc = "Grug far search all",
 				mode = { "n" },
 			},
 			{
-				"<leader>gfo",
+				"<leader>gfc",
+				function()
+					require("grug-far").open({ prefills = { paths = vim.fn.expand("%") } })
+				end,
+				desc = "Grug far search current file",
+				mode = { "n" },
+			},
+			{
+				"<leader>gfa",
 				function()
 					require("grug-far").with_visual_selection({
 						prefills = { paths = vim.fn.expand("%") },
 						transient = true,
 					})
 				end,
-				desc = "Grug far visual open",
+				desc = "Grug far visual search all",
 				mode = { "v" },
 			},
 		},
