@@ -11,10 +11,15 @@ return {
 				aerial = true,
 				octo = true,
 				lsp_trouble = true,
+				flash = true,
+				render_markdown = true,
+				neogit = true,
 				nvim_surround = true,
 				which_key = true,
 				grug_far = true,
-				blink_cmp = true,
+				blink_cmp = {
+					style = "bordered",
+				},
 				snacks = {
 					enabled = true,
 					indent_scope_color = "catppuccin-mocha",

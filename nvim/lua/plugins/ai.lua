@@ -79,36 +79,18 @@ return {
 						opts = {
 							completion_provider = "blink",
 						},
-						slash_commands = {
-							["buffer"] = {
-								callback = "strategies.chat.slash_commands.buffer",
-								description = "Select a buffer using snack",
-								opts = {
-									provider = "snacks",
-									contains_code = true,
-								},
-							},
-							["file"] = {
-								callback = "strategies.chat.slash_commands.file",
-								description = "Select a file using snack",
-								opts = {
-									provider = "snacks",
-									contains_code = true,
-								},
-							},
-						},
 						roles = {
 							user = "Huyne104",
 						},
 						adapter = {
 							name = "copilot",
-							model = "gpt-5",
+							model = "gpt-5-mini",
 						},
 					},
 					inline = {
 						adapter = {
 							name = "copilot",
-							model = "gpt-5",
+							model = "gpt-5-mini",
 						},
 					},
 				},
