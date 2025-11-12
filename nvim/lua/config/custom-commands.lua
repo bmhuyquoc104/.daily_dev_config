@@ -31,5 +31,3 @@ vim.keymap.set("n", "<leader>cp", function()
 	vim.fn.setreg("+", vim.fn.expand("%:p"))
 	vim.notify("Copied full path: " .. vim.fn.expand("%:p"))
 end, { noremap = true, silent = true, desc = "Copy full file path" })
-
-

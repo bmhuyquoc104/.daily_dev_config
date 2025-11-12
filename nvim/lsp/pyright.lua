@@ -12,7 +12,7 @@ return {
 				reportUnusedFunction = "warning",
 				reportUnusedVariable = "warning",
 				reportUnusedParameter = "warning",
-				typeCheckingMode = "strict"
+				-- typeCheckingMode = "strict"
 			},
 		},
 	},

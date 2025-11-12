@@ -4,11 +4,17 @@ return {
 	lazy = false,
 	keys = {
 		{
-			"<leader>sgf",
+			"<leader>si",
 			function()
-				require("snacks").picker.git_files()
+				require("snacks").picker.files({
+					ft = { "jpg", "jpeg", "png", "webp" },
+					confirm = function(self, item, _)
+						self:close()
+						require("img-clip").paste_image({}, "./" .. item.file)
+					end,
+				})
 			end,
-			desc = "Git Files",
+			desc = "Image files",
 		},
 		{
 			"<leader>snh",
@@ -21,7 +27,7 @@ return {
 		{
 			"<leader>sf",
 			function()
-				require("snacks").picker.smart()
+				require("snacks").picker.files()
 			end,
 			desc = "Files",
 		},
@@ -118,6 +124,26 @@ return {
 			desc = "File explorer",
 		},
 		{
+			"<leader>gbh",
+			mode = "v",
+			function()
+				vim.cmd('noau normal! "zy')
+				local txt = vim.fn.getreg("z")
+				pcall(vim.fn.setreg, "z", {})
+				if not txt or txt == "" then
+					vim.notify("No valid selection", vim.log.levels.WARN)
+					return
+				end
+				local commit = txt:match("[%w%d]+")
+				if not commit or #commit < 7 then
+					vim.notify("No valid commit SHA selected", vim.log.levels.WARN)
+					return
+				end
+				require("snacks").gitbrowse({ what = "commit", commit = commit })
+			end,
+			desc = "Git Browse selected commit",
+		},
+		{
 			"<leader>gbo",
 			mode = { "n", "v" },
 			function()
@@ -137,7 +163,7 @@ return {
 					notify = false,
 				})
 			end,
-			{ desc = "Git Browse (copy)" },
+			desc = "Git Browse (copy)",
 		},
 		{
 			"<leader>gi",
@@ -214,9 +240,51 @@ return {
 		indent = {
 			enable = true,
 		},
+
 		gitbrowse = {
 			enable = true,
+			url_patterns = {
+				["dev%.azure%.com"] = {
+					repo = "",
+					branch = "?version=GB{branch}&_a=contents",
+					file = function(fields)
+						return "?path=/"
+							.. fields.file
+							.. "&version=GB"
+							.. fields.branch
+							.. (
+								fields.line_start
+									and ("&line=" .. fields.line_start .. "&lineEnd=" .. (fields.line_end or fields.line_start) .. "&lineStartColumn=1" .. "&lineEndColumn=1" .. "&lineStyle=plain" .. "&_a=contents")
+								or "&_a=contents"
+							)
+					end,
+					permalink = function(fields)
+						return "?path=/"
+							.. fields.file
+							.. "&version=GC"
+							.. fields.commit
+							.. (
+								fields.line_start
+									and ("&line=" .. fields.line_start .. "&lineEnd=" .. (fields.line_end or fields.line_start) .. "&lineStartColumn=1" .. "&lineEndColumn=1" .. "&lineStyle=plain" .. "&_a=contents")
+								or "&_a=contents"
+							)
+					end,
+					commit = "?_a=history&version=GC{commit}",
+					blame = function(fields)
+						return "?path=/"
+							.. fields.file
+							.. "&version=GB"
+							.. fields.branch
+							.. (
+								fields.line_start
+									and ("&line=" .. fields.line_start .. "&lineEnd=" .. (fields.line_end or fields.line_start) .. "&lineStartColumn=1" .. "&lineEndColumn=1" .. "&lineStyle=plain" .. "&_a=blame")
+								or "&_a=blame"
+							)
+					end,
+				},
+			},
 		},
+
 		git = {
 			enable = true,
 		},
