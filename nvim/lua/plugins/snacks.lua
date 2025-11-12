@@ -17,6 +17,7 @@ return {
 			end,
 			desc = "Notification history",
 		},
+
 		{
 			"<leader>sf",
 			function()
@@ -89,11 +90,112 @@ return {
 			desc = "Hide notification",
 		},
 		{
+			"<leader>glf",
+			function()
+				require("snacks").picker.git_log_file()
+			end,
+			desc = "Git Log File",
+		},
+		{
+			"<leader>gll",
+			function()
+				require("snacks").picker.git_log_line()
+			end,
+			desc = "Git Log Line",
+		},
+		{
+			"<leader>sch",
+			function()
+				require("snacks").picker.command_history()
+			end,
+			desc = "Command History",
+		},
+		{
 			"<leader>e",
 			function()
 				require("snacks").explorer()
 			end,
 			desc = "File explorer",
+		},
+		{
+			"<leader>gbo",
+			mode = { "n", "v" },
+			function()
+				require("snacks").gitbrowse()
+			end,
+			desc = "Git Browse (open)",
+		},
+
+		{
+			"<leader>gbc",
+			mode = { "n", "v" },
+			function()
+				require("snacks").gitbrowse({
+					open = function(url)
+						vim.fn.setreg("+", url)
+					end,
+					notify = false,
+				})
+			end,
+			{ desc = "Git Browse (copy)" },
+		},
+		{
+			"<leader>gi",
+			function()
+				require("snacks").picker.gh_issue()
+			end,
+			desc = "GitHub Issues (open)",
+		},
+		{
+			"<leader>gI",
+			function()
+				require("snacks").picker.gh_issue({ state = "all" })
+			end,
+			desc = "GitHub Issues (all)",
+		},
+		{
+			"<leader>gp",
+			function()
+				require("snacks").picker.gh_pr()
+			end,
+			desc = "GitHub Pull Requests (open)",
+		},
+		{
+			"<leader>gP",
+			function()
+				require("snacks").picker.gh_pr({ state = "all" })
+			end,
+			desc = "GitHub Pull Requests (all)",
+		},
+		{
+			"<leader>stc",
+			function()
+				require("snacks").picker.todo_comments()
+			end,
+			desc = "Todo",
+		},
+		{
+			"<leader>sac",
+			function()
+				require("snacks").picker.todo_comments({
+					keywords = { "TODO", "FIX", "FIXME", "WARNING", "WARN", "HACK", "PERF", "NOTE" },
+				})
+			end,
+			desc = "Todo/Fix/Fixme",
+		},
+		{
+			"<leader>do",
+			function()
+				require("snacks").scratch()
+			end,
+			desc = "Toggle Scratch Buffer",
+		},
+		{
+			"<leader>ds",
+			function()
+				require("snacks").scratch.select()
+			end,
+			desc = "Select Scratch Buffer",
 		},
 	},
 	opts = {
@@ -112,8 +214,18 @@ return {
 		indent = {
 			enable = true,
 		},
+		gitbrowse = {
+			enable = true,
+		},
+		git = {
+			enable = true,
+		},
+		gh = {
+			enable = true,
+		},
 		scroll = { enabled = true },
 		bigfile = { enabled = true },
+		scratch = { enabled = true },
 		dashboard = {
 			enable = true,
 			example = "compact_files",

@@ -9,33 +9,33 @@ return {
 	-- 		vim.keymap.set("n", "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", {})
 	-- 	end,
 	-- },
-	{
-		"linrongbin16/gitlinker.nvim",
-		cmd = "GitLink",
-		opts = {},
-		keys = {
-			{ "<leader>glc", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
-			{ "<leader>glo", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
-		},
-	},
-	{
-		"pwntester/octo.nvim",
-		cmd = "Octo",
-		keys = {
-			{ "<leader>ops", ":Octo pr search <CR>", desc = "Octo PR search" },
-			{ "<leader>opl", ":Octo pr list <CR>", desc = "Octo PR list" },
-		},
-		config = function()
-			require("octo").setup({
-				enable_builtin = true,
-				picker = "snacks",
-				picker_config = {
-					use_emojis = true,
-				},
-				default_to_projects_v2 = true,
-			})
-		end,
-	},
+	-- {
+	-- 	"linrongbin16/gitlinker.nvim",
+	-- 	cmd = "GitLink",
+	-- 	opts = {},
+	-- 	keys = {
+	-- 		{ "<leader>glc", "<cmd>GitLink<cr>", mode = { "n", "v" }, desc = "Yank git link" },
+	-- 		{ "<leader>glo", "<cmd>GitLink!<cr>", mode = { "n", "v" }, desc = "Open git link" },
+	-- 	},
+	-- },
+	-- {
+	-- 	"pwntester/octo.nvim",
+	-- 	cmd = "Octo",
+	-- 	keys = {
+	-- 		{ "<leader>ops", ":Octo pr search <CR>", desc = "Octo PR search" },
+	-- 		{ "<leader>opl", ":Octo pr list <CR>", desc = "Octo PR list" },
+	-- 	},
+	-- 	config = function()
+	-- 		require("octo").setup({
+	-- 			enable_builtin = true,
+	-- 			picker = "snacks",
+	-- 			picker_config = {
+	-- 				use_emojis = true,
+	-- 			},
+	-- 			default_to_projects_v2 = true,
+	-- 		})
+	-- 	end,
+	-- },
 	{
 		"aaronhallaert/advanced-git-search.nvim",
 		cmd = { "AdvancedGitSearch" },
