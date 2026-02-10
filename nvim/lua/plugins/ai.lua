@@ -74,7 +74,7 @@ return {
 						},
 					},
 				},
-				strategies = {
+				interactions = {
 					chat = {
 						opts = {
 							completion_provider = "blink",
@@ -84,13 +84,13 @@ return {
 						},
 						adapter = {
 							name = "copilot",
-							model = "gpt-5-mini",
+							model = "gpt-5.1-codex",
 						},
 					},
 					inline = {
 						adapter = {
 							name = "copilot",
-							model = "gpt-5-mini",
+							model = "gpt-5.1-codex",
 						},
 					},
 				},

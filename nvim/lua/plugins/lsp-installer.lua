@@ -15,6 +15,7 @@ return {
           "pyright",
 					"ruff",
           "taplo",
+					"terraform-ls",
 					-- Formatters/Linters
 					-- "rubocop",
 					"stylua",

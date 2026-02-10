@@ -16,6 +16,7 @@ if status is-interactive
   zoxide init fish | source
   starship init fish | source
   mise activate fish | source
+  direnv hook fish | source
 
   # Aliases
   alias pzf='nvim (fzf -m --preview "bat --style=numbers --color=always {}")'
@@ -31,7 +32,7 @@ if status is-interactive
   --color=selected-bg:#45475a \
   --multi"
 
-  # fish_config theme save "Catppuccin Mocha"
+  fish_config theme save "Catppuccin Mocha"
 
   bind -e --preset \cs
 
