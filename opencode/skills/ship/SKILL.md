@@ -107,11 +107,17 @@ fi
 
 ### Step 6 — Rebase onto destination
 
+Rebase the current branch onto the target branch to ensure no merge conflicts:
+
 ```bash
+git fetch origin
 git rebase origin/$TARGET_BRANCH
 ```
 
-If there are conflicts, resolve them (keeping both sides where appropriate), then continue the rebase. Do NOT skip this step.
+If there are conflicts, resolve them (keeping both sides where appropriate), then continue the rebase. Do NOT skip this step. Push after successful rebase with `--force-with-lease` if needed:
+```bash
+git push --force-with-lease
+```
 
 ### Step 7 — Stage files
 
