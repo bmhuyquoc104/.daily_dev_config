@@ -7,14 +7,33 @@
       "git *": "allow",
       "npm *": "allow",
       "rm *": "deny",
-      "grep *": "allow"
+      "grep *": "allow",
+      "env": "deny",
+      "env *": "deny",
+      "printenv": "deny",
+      "printenv *": "deny",
+      "export": "deny"
     },
     "read": {
       "*": "allow",
       "*.settings.local.toml": "deny",
       "*.env": "deny",
       "*.env.*": "deny",
-      "*.env.example": "allow"
+      "*.env.example": "allow",
+      ".npmrc": "deny",
+      ".netrc": "deny",
+      "*.pem": "deny",
+      "*.key": "deny",
+      "*.p12": "deny",
+      "*.pfx": "deny",
+      "**/credentials.json": "deny",
+      "**/auth.json": "deny",
+      ".bash_history": "deny",
+      ".zsh_history": "deny",
+      "**/.aws/credentials": "deny",
+      "**/.docker/config.json": "deny",
+      "**/id_rsa": "deny",
+      "**/id_ed25519": "deny"
     }
   }
 }
