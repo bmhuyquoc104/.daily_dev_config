@@ -17,6 +17,8 @@
     "read": {
       "*": "allow",
       "*.settings.local.toml": "deny",
+      "**/settings.local.toml": "deny",
+      ".secrets.toml": "deny",
       "*.env": "deny",
       "*.env.*": "deny",
       "*.env.example": "allow",
