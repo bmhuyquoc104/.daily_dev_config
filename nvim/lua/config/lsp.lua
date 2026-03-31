@@ -40,6 +40,9 @@ local function setup_lsp()
 		"ruby_ls",
 		"taplo",
 		"terraform_ls",
+		"fish_lsp",
+		"bash_ls",
+		"docker_langserver",
 	})
 end
 
