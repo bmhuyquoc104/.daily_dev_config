@@ -11,7 +11,7 @@ M.config = function()
 	local parsers = {
 		"bash",
 		-- 'c',
-		-- 'comment',
+		"comment",
 		"css",
 		"csv",
 		"diff",
