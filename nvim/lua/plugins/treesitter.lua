@@ -1,12 +1,13 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
-
 	lazy = false,
 	branch = "main",
 	build = ":TSUpdate",
 }
 
 M.config = function()
+	local ts = require("nvim-treesitter")
+
 	local parsers = {
 		"bash",
 		-- 'c',
@@ -46,27 +47,28 @@ M.config = function()
 		-- 'zig',
 	}
 
-	require("nvim-treesitter").install(parsers)
+	if ts.install then
+		ts.install(parsers)
+	end
 
 	vim.api.nvim_create_autocmd("FileType", {
 		callback = function(args)
-			local buf, filetype = args.buf, args.match
+			local buf = args.buf
 
-			local language = vim.treesitter.language.get_lang(filetype)
+			local language = vim.treesitter.language.get_lang(args.match)
 			if not language then
 				return
 			end
 
-			-- check if parser exists and load it
-			if not vim.treesitter.language.add(language) then
+			if not pcall(vim.treesitter.language.add, language) then
 				return
 			end
 
-			-- enables syntax highlighting and other treesitter features
-			vim.treesitter.start(buf, language)
+			pcall(vim.treesitter.start, buf)
 
-			-- enables treesitter based indentation
-			vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			pcall(function()
+				vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+			end)
 		end,
 	})
 end
