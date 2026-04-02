@@ -65,7 +65,7 @@ return {
 			end
 		end, {})
 
-		vim.keymap.set("n", "<leader>ct", "<cmd>FormatToggle<CR>", {
+		vim.keymap.set("n", "<leader>tc", "<cmd>FormatToggle<CR>", {
 			desc = "Toggle autoformat (buffer)",
 		})
 	end,

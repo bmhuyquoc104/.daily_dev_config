@@ -1,6 +1,6 @@
 return {
 	cmd = { "yaml-language-server", "--stdio" },
-	filetypes = { "yaml", "yaml.docker-compose" },
+	filetypes = { "yaml" },
 	settings = {
 		yaml = {
 			schemaStore = {

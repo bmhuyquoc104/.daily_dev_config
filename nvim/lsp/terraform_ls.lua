@@ -1,5 +1,5 @@
 return {
 	cmd = { "terraform-ls", "serve" },
-	filetypes = { "terraform", "tf", "terraform-vars", "hcl", "tfvars" },
+	filetypes = { "terraform", "tf", "hcl" },
 	settings = {},
 }
