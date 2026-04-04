@@ -47,6 +47,7 @@ M.config = function()
 		-- 'templ',
 		"toml",
 		"tsv",
+		"tsx",
 		"typescript",
 		"zsh",
 		-- "vim",
