@@ -33,7 +33,7 @@ if status is-interactive
   --color=selected-bg:#45475a \
   --multi"
 
-    fish_config theme save "Catppuccin Mocha"
+    fish_config theme choose "Catppuccin Mocha"
 
     bind -e --preset \cs
 

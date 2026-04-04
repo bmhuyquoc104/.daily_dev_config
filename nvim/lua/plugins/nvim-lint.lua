@@ -25,6 +25,7 @@ return {
 			mysql = { "sqlfluff" },
 			pgsql = { "sqlfluff" },
 			dotenv = { "dotenv_linter" },
+			env = { "dotenv_linter" },
 		}
 
 		local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
