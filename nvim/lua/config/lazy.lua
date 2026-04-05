@@ -37,10 +37,24 @@ vim.cmd("set shiftwidth=2")
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 -- Set up folding for treesitter
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldlevelstart = 99
+vim.api.nvim_create_autocmd("FileType", {
+	callback = function(args)
+		local bufnr = args.buf
 
+		-- Check if treesitter parser exists for this buffer
+		local has_ts = pcall(vim.treesitter.get_parser, bufnr)
+
+		if has_ts then
+			vim.wo[0][0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+			vim.wo[0][0].foldmethod = "expr"
+		else
+			vim.wo.foldmethod = "indent"
+			vim.wo.foldexpr = nil
+		end
+	end,
+})
+
+vim.opt.foldlevelstart = 99
 -- Setup lazy.nvim
 require("lazy").setup({
 	spec = {
