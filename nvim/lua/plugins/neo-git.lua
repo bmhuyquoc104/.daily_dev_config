@@ -1,4 +1,4 @@
-return {
+	return {
 	{
 		"NeogitOrg/neogit",
 		dependencies = {
@@ -20,22 +20,22 @@ return {
 		config = function()
 			local neogit = require("neogit")
 			neogit.setup({
-        integrations = {
-          snacks = true,
-        }
-      })
+				integrations = {
+					snacks = true,
+				},
+			})
 		end,
 	},
 	{
 		"sindrets/diffview.nvim",
-    cmd = { "DiffviewOpen" },
-    keys = {
-      {
-        "<leader>dvo",
-        "<cmd>DiffviewOpen<CR>",
-        desc = "Diffview open merge tool",
-      },
-    },
+		cmd = { "DiffviewOpen" },
+		keys = {
+			{
+				"<leader>dvo",
+				"<cmd>DiffviewOpen<CR>",
+				desc = "Diffview open merge tool",
+			},
+		},
 		config = function()
 			require("diffview").setup({
 				view = {
