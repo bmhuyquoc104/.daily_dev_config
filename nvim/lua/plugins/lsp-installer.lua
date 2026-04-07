@@ -22,6 +22,7 @@ return {
 					"prettier",
 					"dotenv-linter",
 					"sqlfluff",
+					"shfmt",
 				},
 			})
 		end,
