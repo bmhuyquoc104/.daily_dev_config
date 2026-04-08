@@ -10,7 +10,7 @@ return {
 					"json-lsp",
 					"typescript-language-server",
 					"lua-language-server",
-					"pyright",
+					"pyrefly",
 					"ruff",
 					"taplo",
 					"terraform-ls",
