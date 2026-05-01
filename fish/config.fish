@@ -50,3 +50,10 @@ if status is-interactive
     bind -M insert \cf pager-toggle-search
     bind -M default \cf pager-toggle-search
 end
+
+# pnpm
+set -gx PNPM_HOME "/Users/bmhuyquoc104/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end

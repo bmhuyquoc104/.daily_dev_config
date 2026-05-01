@@ -296,7 +296,99 @@ return {
 		scratch = { enabled = true },
 		dashboard = {
 			enable = true,
-			example = "compact_files",
+			sections = {
+				{ section = "header" },
+				{ section = "keys", gap = 1, padding = 1 },
+				{
+					pane = 2,
+					icon = " ",
+					title = "Recent Files",
+					section = "recent_files",
+					indent = 2,
+					padding = 1,
+					cwd = true,
+				},
+				{
+					pane = 2,
+					icon = " ",
+					title = "Projects",
+					section = "projects",
+					indent = 2,
+					padding = 1,
+				},
+				function()
+					local in_git = Snacks.git.get_root() ~= nil
+					local remote_type = nil
+					if in_git then
+						local handle = io.popen("git remote get-url origin 2>/dev/null")
+						if handle then
+							local remote_url = handle:read("*all")
+							handle:close()
+							if remote_url:match("github%.com") or remote_url:match("github%.") then
+								remote_type = "github"
+							elseif remote_url:match("dev%.azure%.com") or remote_url:match("visualstudio%.com") then
+								remote_type = "azure"
+							end
+						end
+					end
+					return {
+						pane = 2,
+						icon = " ",
+						desc = "Browse Repo",
+						padding = 1,
+						key = "b",
+						action = function()
+							Snacks.gitbrowse()
+						end,
+						enabled = in_git,
+						remote_type = remote_type,
+					}
+				end,
+				function()
+					local in_git = Snacks.git.get_root() ~= nil
+					local remote_type = nil
+					if in_git then
+						local handle = io.popen("git remote get-url origin 2>/dev/null")
+						if handle then
+							local remote_url = handle:read("*all")
+							handle:close()
+							if remote_url:match("github%.com") or remote_url:match("github%.") then
+								remote_type = "github"
+							elseif remote_url:match("dev%.azure%.com") or remote_url:match("visualstudio%.com") then
+								remote_type = "azure"
+							end
+						end
+					end
+					return {
+						pane = 2,
+						icon = " ",
+						title = "Pull Requests",
+						section = "terminal",
+						enabled = in_git and remote_type ~= nil,
+						cmd = remote_type == "github" and "gh pr list -L 5"
+							or 'az repos pr list --top 5 --query "[].{ID:id, Title:title, Status:status}" -o table',
+						height = 5,
+						padding = 1,
+						ttl = 5 * 60,
+						indent = 3,
+					}
+				end,
+				{
+					pane = 2,
+					icon = " ",
+					title = "Git Status",
+					section = "terminal",
+					enabled = function()
+						return Snacks.git.get_root() ~= nil
+					end,
+					cmd = "git status --short --branch --renames",
+					height = 5,
+					padding = 1,
+					ttl = 5 * 60,
+					indent = 3,
+				},
+				{ section = "startup" },
+			},
 		},
 	},
 }
