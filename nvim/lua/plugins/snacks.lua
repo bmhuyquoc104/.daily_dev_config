@@ -46,6 +46,20 @@ return {
 			desc = "Live Grep Current Project",
 		},
 		{
+			"<leader>sm",
+			function()
+				require("snacks").picker.smart()
+			end,
+			desc = "Search Smart",
+		},
+		{
+			"<leader>sap",
+			function()
+				require("snacks").picker.projects()
+			end,
+			desc = "Search Projects",
+		},
+		{
 			"<leader>sws",
 			function()
 				require("snacks").picker.lsp_workspace_symbols()
