@@ -38,9 +38,22 @@ return {
 			},
 		},
 		config = function()
+			local opencode_cmd = "opencode --port"
+			---@type snacks.terminal.Opts
+			local snacks_terminal_opts = {
+				win = {
+					position = "right",
+					enter = false,
+				},
+			}
+
 			---@type opencode.Opts
 			vim.g.opencode_opts = {
-				-- Your configuration, if any; goto definition on the type or field for details
+				server = {
+					start = function()
+						require("snacks.terminal").open(opencode_cmd, snacks_terminal_opts)
+					end,
+				},
 			}
 
 			vim.o.autoread = true -- Required for `opts.events.reload`
@@ -53,7 +66,7 @@ return {
 				require("opencode").select()
 			end, { desc = "Execute opencode action…" })
 			vim.keymap.set({ "n", "t" }, "<leader>ot", function()
-				require("opencode").toggle()
+				require("snacks.terminal").toggle(opencode_cmd, snacks_terminal_opts)
 			end, { desc = "Toggle opencode" })
 
 			vim.keymap.set({ "n", "x" }, "go", function()

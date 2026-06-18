@@ -1,5 +1,6 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "plugin": ["superpowers@git+https://github.com/obra/superpowers.git"],
   "permission": {
     "bash": {
       "*": "allow",
@@ -7,6 +8,11 @@
       "rm *": "ask",
       "git *": "allow",
       "npm *": "allow",
+      "npm install *": "ask",
+      "uv *": "allow",
+      "uv add *": "ask",
+      "poetry *": "allow",
+      "poetry add *": "ask",
       "grep *": "allow",
       "env": "deny",
       "env *": "deny",
