@@ -15,6 +15,17 @@ vim.api.nvim_set_keymap("n", "bp", ":bprev<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "bn", ":bnext<enter>", { noremap = false })
 vim.api.nvim_set_keymap("n", "bd", ":bdelete<enter>", { noremap = false })
 vim.api.nvim_set_keymap('t', '<leader>q', '<C-\\><C-n>', { noremap = true, silent = true })
+
+-- Switch windows directly from normal or terminal mode
+vim.keymap.set("n", "<A-h>", "<C-w>h", { silent = true, desc = "Move to left window" })
+vim.keymap.set("n", "<A-j>", "<C-w>j", { silent = true, desc = "Move to lower window" })
+vim.keymap.set("n", "<A-k>", "<C-w>k", { silent = true, desc = "Move to upper window" })
+vim.keymap.set("n", "<A-l>", "<C-w>l", { silent = true, desc = "Move to right window" })
+vim.keymap.set("t", "<A-h>", "<C-\\><C-n><C-w>h", { silent = true, desc = "Move to left window" })
+vim.keymap.set("t", "<A-j>", "<C-\\><C-n><C-w>j", { silent = true, desc = "Move to lower window" })
+vim.keymap.set("t", "<A-k>", "<C-\\><C-n><C-w>k", { silent = true, desc = "Move to upper window" })
+vim.keymap.set("t", "<A-l>", "<C-\\><C-n><C-w>l", { silent = true, desc = "Move to right window" })
+
 vim.keymap.set("n", "tn", ":tabnew<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "tc", ":tabclose<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("x", "<leader>p", '"d"+P', { noremap = false })

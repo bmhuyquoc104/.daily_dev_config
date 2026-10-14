@@ -27,7 +27,18 @@ return {
 		{
 			"<leader>sf",
 			function()
-				require("snacks").picker.files()
+				require("snacks").picker.files({
+					exclude = {
+						"**/test/**",
+						"**/tests/**",
+						"**/__tests__/**",
+						"**/*.test.*",
+						"**/*.spec.*",
+						"**/*_test.*",
+						"**/graphify/**",
+						"**/graphify-out/**",
+					},
+				})
 			end,
 			desc = "Files",
 		},
@@ -41,7 +52,18 @@ return {
 		{
 			"<leader>scp",
 			function()
-				require("snacks").picker.grep()
+				require("snacks").picker.grep({
+					exclude = {
+						"**/test/**",
+						"**/tests/**",
+						"**/__tests__/**",
+						"**/*.test.*",
+						"**/*.spec.*",
+						"**/*_test.*",
+						"**/graphify/**",
+						"**/graphify-out/**",
+					},
+				})
 			end,
 			desc = "Live Grep Current Project",
 		},
@@ -380,7 +402,7 @@ return {
 						section = "terminal",
 						enabled = in_git and remote_type ~= nil,
 						cmd = remote_type == "github" and "gh pr list -L 5"
-							or 'az repos pr list --top 5 --query "[].{ID:id, Title:title, Status:status}" -o table',
+							or "az repos pr list --status all --query \"[?status=='active' || status=='completed'] | [:5].{ID:id, Title:title, Status:status}\" -o table",
 						height = 5,
 						padding = 1,
 						ttl = 5 * 60,

@@ -67,8 +67,10 @@ description: >-
 
   </example>
 mode: subagent
-tools:
-  task: false
+permissions:
+  - action: subagent
+    resource: "*"
+    effect: deny
 ---
 You are an Implementation Specialist—a disciplined backend developer who executes delegated tasks with precision and zero architectural drift.
 
