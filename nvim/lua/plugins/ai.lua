@@ -24,9 +24,13 @@ return {
 							opencode_send = function(picker)
 								local items = vim.tbl_map(function(item)
 									return item.file
-										and require("opencode").format({ path = item.file, from = item.pos, to = item.end_pos })
+											and require("opencode").format({
+												path = item.file,
+												from = item.pos,
+												to = item.end_pos,
+											})
 										or item.text
-									end, picker:selected({ fallback = true }))
+								end, picker:selected({ fallback = true }))
 
 								require("opencode").prompt(table.concat(items, ", ") .. " ")
 							end,
@@ -64,12 +68,12 @@ return {
 			vim.o.autoread = true -- Required for `opts.events.reload`
 
 			-- Recommended/example keymaps
-			vim.keymap.set({ "n", "x" }, "<leader>oa", function()
-				require("opencode").ask("@this: ")
-			end, { desc = "Ask opencode…" })
-			vim.keymap.set({ "n", "x" }, "<leader>op", function()
-				require("opencode").select()
-			end, { desc = "Execute opencode action…" })
+			-- vim.keymap.set({ "n", "x" }, "<leader>oa", function()
+			-- 	require("opencode").ask("@this: ")
+			-- end, { desc = "Ask opencode…" })
+			-- vim.keymap.set({ "n", "x" }, "<leader>op", function()
+			-- 	require("opencode").select()
+			-- end, { desc = "Execute opencode action…" })
 			vim.keymap.set({ "n", "t" }, "<A-o>", function()
 				require("snacks.terminal").toggle(opencode_cmd, snacks_terminal_opts)
 			end, { desc = "Toggle opencode" })
@@ -81,12 +85,12 @@ return {
 				return require("opencode").operator("@this") .. "_"
 			end, { desc = "Add line to opencode", expr = true })
 
-			vim.keymap.set("n", "<leader>os", function()
-				local terminal = require("snacks.terminal").get(opencode_cmd, { create = false })
-				if terminal then
-					terminal:close()
-				end
-			end, { desc = "Close opencode terminal" })
+			-- vim.keymap.set("n", "<leader>os", function()
+			-- 	local terminal = require("snacks.terminal").get(opencode_cmd, { create = false })
+			-- 	if terminal then
+			-- 		terminal:close()
+			-- 	end
+			-- end, { desc = "Close opencode terminal" })
 
 			-- You may want these if you use the opinionated `<C-a>` and `<C-x>` keymaps above — otherwise consider `<leader>o…` (and remove terminal mode from the `toggle` keymap)
 			vim.keymap.set("n", "+", "<C-a>", { desc = "Increment under cursor", noremap = true })
